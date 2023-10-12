@@ -1,0 +1,43 @@
+//Gallery with Search Input fields and filters from Dropdown or ComboBox working together to give results
+Sort(
+    Search(
+        Filter(
+            DataForGallery,
+            // IsBlank or IsEmpty or Input. Lastly what column it should be in
+            IsBlank(ComboBox1.SelectedItems.Value) ||
+            IsEmpty(ComboBox1.SelectedItems) ||
+            'Case status' in ComboBox1.SelectedItems.Value,
+            //Case status should be the selected items in from ComboBox
+
+            IsBlank(dpr_ActivityTypeFilter.SelectedText.Value) ||
+            false ||
+            Activity_Type in dpr_ActivityTypeFilter.SelectedText.Value,
+            //Activity Type should be selected item in DropDown
+
+            IsBlank(dpr_FRANCHISE.SelectedText.Value) ||
+            false ||
+            'Franchise ' in dpr_FRANCHISE.SelectedText.Value,
+            //FRANCHISE should be selected item in DropDown
+			
+			!(ID in "1"),
+            !(ID in "2")
+            //Removes ID 1 and 2 (Budget and Misc)
+
+        ),
+        GallerySearchInput.Text, //Text input field to search in the specific columns below
+        "Franchise",
+        "Projecttitle",
+        "Headline",
+        "Commentsonscope",
+        "Commentstopriority",
+        "Commentstoassessment",
+        "Gatestatus",
+        "Statuscomment",
+        "Actionagreed",
+        "FunctionalAreaLink",
+        "ActivityCustomer",
+        "Strategylink"
+    ),
+    Value(ID), //Value solves problems with sorting if a number column contains "clusters": 11-20, 21-30, 31-40 and single numbers: 1, 2, 3, 4,
+    SortOrder.Descending
+)
