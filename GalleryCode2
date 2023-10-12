@@ -1,0 +1,25 @@
+Sort(
+    Search(
+        Filter(
+            OverviewOfProjects,
+            IsBlank(cmbTaskstatus.SelectedItems.Value) || IsEmpty(cmbTaskstatus.SelectedItems) || TaskStatus in cmbTaskstatus.SelectedItems.Value,
+            IsBlank(cmbTrafficLight.SelectedItems.Value) || IsEmpty(cmbTrafficLight.SelectedItems) || DeliveryTrafficLight in cmbTrafficLight.SelectedItems.Value || TrafficLight in cmbTrafficLight.SelectedItems.Value
+        ),
+        SearchInput.Text,
+        "IDProject",
+        "WorkingNotes",
+        "Title",
+        "IDProjectName",
+        "Task",
+        "ExtContactPerson",
+        "QTCResponsible",
+        "TestResponsible",
+        "TestSupport1",
+        "TestSupport2",
+        "Conclusion",
+        "TaskList",
+        "Task_Q_Issue"
+    ),
+    ProjectofArea,
+    SortOrder.Ascending
+)
